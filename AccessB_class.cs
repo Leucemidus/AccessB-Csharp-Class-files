@@ -69,7 +69,8 @@ namespace AccessB_Debug
         *  es de usar las propiedades en conjunto con los metodos de lectura y escritura al enviar
         *  comandos al PIC.
         */
-        
+       
+        /*PORTA RA6 is used for the external osc. for that reason it doesn't work also LATA LAT6 and TRISA6*/
         public UInt32 PORTA { set { SFRValue(128, value); } get { return SFRValue(128); } }
         public UInt32 PORTAbits_RA0 { set { SFRBitValue(128, 0, value); } get { return SFRBitValue(128, 0); } }
         public UInt32 PORTAbits_RA1 { set { SFRBitValue(128, 1, value); } get { return SFRBitValue(128, 1); } }
@@ -77,7 +78,7 @@ namespace AccessB_Debug
         public UInt32 PORTAbits_RA3 { set { SFRBitValue(128, 3, value); } get { return SFRBitValue(128, 3); } }
         public UInt32 PORTAbits_RA4 { set { SFRBitValue(128, 4, value); } get { return SFRBitValue(128, 4); } }
         public UInt32 PORTAbits_RA5 { set { SFRBitValue(128, 5, value); } get { return SFRBitValue(128, 5); } }
-        public UInt32 PORTAbits_RA6 { set { SFRBitValue(128, 6, value); } get { return SFRBitValue(128, 6); } }
+        //public UInt32 PORTAbits_RA6 { set { SFRBitValue(128, 6, value); } get { return SFRBitValue(128, 6); } }
 
         public UInt32 PORTB { set { SFRValue(129, value); } get { return SFRValue(129); } }
         public UInt32 PORTBbits_RB0 { set { SFRBitValue(129, 0, value); } get { return SFRBitValue(129, 0); } }
@@ -99,6 +100,7 @@ namespace AccessB_Debug
         //Read only bit on 18F2550 devices, TRISE and LATE aren't implemented on 18F2550 devices
         public UInt32 PORTEbits_RE3 { get { return SFRBitValue(132, 3); } }
 
+        /*PORTA RA6 is used for the external osc. for that reason it doesn't work also LATA LAT6 and TRISA6*/
         public UInt32 LATA { set { SFRValue(137, value); } get { return SFRValue(137); } }
         public UInt32 LATAbits_LATA0 { set { SFRBitValue(137, 0, value); } get { return SFRBitValue(137, 0); } }
         public UInt32 LATAbits_LATA1 { set { SFRBitValue(137, 1, value); } get { return SFRBitValue(137, 1); } }
@@ -106,7 +108,7 @@ namespace AccessB_Debug
         public UInt32 LATAbits_LATA3 { set { SFRBitValue(137, 3, value); } get { return SFRBitValue(137, 3); } }
         public UInt32 LATAbits_LATA4 { set { SFRBitValue(137, 4, value); } get { return SFRBitValue(137, 4); } }
         public UInt32 LATAbits_LATA5 { set { SFRBitValue(137, 5, value); } get { return SFRBitValue(137, 5); } }
-        public UInt32 LATAbits_LATA6 { set { SFRBitValue(137, 6, value); } get { return SFRBitValue(137, 6); } }
+        //public UInt32 LATAbits_LATA6 { set { SFRBitValue(137, 6, value); } get { return SFRBitValue(137, 6); } }
 
         public UInt32 LATB { set { SFRValue(138, value); } get { return SFRValue(138); } }
         public UInt32 LATBbits_LATB0 { set { SFRBitValue(138, 0, value); } get { return SFRBitValue(138, 0); } }
@@ -125,6 +127,7 @@ namespace AccessB_Debug
         public UInt32 LATCbits_LATC6 { set { SFRBitValue(139, 6 , value); } get { return SFRBitValue(139, 6); } }
         public UInt32 LATCbits_LATC7 { set { SFRBitValue(139, 7 , value); } get { return SFRBitValue(139, 7); } }
 
+        /*PORTA RA6 is used for the external osc. for that reason it doesn't work also LATA LAT6 and TRISA6*/
         public UInt32 TRISA { set { SFRValue(146, value); } get { return SFRValue(146); } }
         public UInt32 TRISAbits_TRISA0 { set { SFRBitValue(146, 0, value); } get { return SFRBitValue(146, 0); } }
         public UInt32 TRISAbits_TRISA1 { set { SFRBitValue(146, 1, value); } get { return SFRBitValue(146, 1); } }
@@ -132,7 +135,7 @@ namespace AccessB_Debug
         public UInt32 TRISAbits_TRISA3 { set { SFRBitValue(146, 3, value); } get { return SFRBitValue(146, 3); } }
         public UInt32 TRISAbits_TRISA4 { set { SFRBitValue(146, 4, value); } get { return SFRBitValue(146, 4); } }
         public UInt32 TRISAbits_TRISA5 { set { SFRBitValue(146, 5, value); } get { return SFRBitValue(146, 5); } }
-        public UInt32 TRISAbits_TRISA6 { set { SFRBitValue(146, 6, value); } get { return SFRBitValue(146, 6); } }
+        //public UInt32 TRISAbits_TRISA6 { set { SFRBitValue(146, 6, value); } get { return SFRBitValue(146, 6); } }
 
         public UInt32 TRISB { set { SFRValue(147, value); } get { return SFRValue(147); } }
         public UInt32 TRISBbits_TRISB0 { set { SFRBitValue(147, 0, value); } get { return SFRBitValue(147, 0); } }
@@ -571,20 +574,20 @@ namespace AccessB_Debug
         public UInt32 GPIO3 { set { SFRBitValue(130, 2, value); } get { return SFRBitValue(130, 2); } }
         public UInt32 GPIO4 { set { SFRBitValue(130, 6, value); } get { return SFRBitValue(130, 6); } }
         public UInt32 GPIO5 { set { SFRBitValue(130, 7, value); } get { return SFRBitValue(130, 7); } }
-        public UInt32 GPIO6 { set { SFRBitValue(129, 0, value); } get { return SFRBitValue(129, 0); } }
-        public UInt32 GPIO7 { set { SFRBitValue(129, 1, value); } get { return SFRBitValue(129, 1); } }
-        public UInt32 GPIO8 { set { SFRBitValue(129, 2, value); } get { return SFRBitValue(129, 2); } }
-        public UInt32 GPIO9 { set { SFRBitValue(129, 3, value); } get { return SFRBitValue(129, 3); } }
-        public UInt32 GPIO10 { set { SFRBitValue(129, 4, value); } get { return SFRBitValue(129, 4); } }
-        public UInt32 GPIO11 { set { SFRBitValue(129, 5, value); } get { return SFRBitValue(129, 5); } }
-        public UInt32 GPIO12 { set { SFRBitValue(129, 6, value); } get { return SFRBitValue(129, 6); } }
-        public UInt32 GPIO13 { set { SFRBitValue(129, 7, value); } get { return SFRBitValue(129, 7); } }
-        public UInt32 GPIO14 { set { SFRBitValue(128, 0, value); } get { return SFRBitValue(128, 0); } }
-        public UInt32 GPIO15 { set { SFRBitValue(128, 1, value); } get { return SFRBitValue(128, 1); } }
-        public UInt32 GPIO16 { set { SFRBitValue(128, 2, value); } get { return SFRBitValue(128, 2); } }
-        public UInt32 GPIO17 { set { SFRBitValue(128, 3, value); } get { return SFRBitValue(128, 3); } }
-        public UInt32 GPIO18 { set { SFRBitValue(128, 4, value); } get { return SFRBitValue(128, 4); } }
-        public UInt32 GPIO19 { set { SFRBitValue(128, 5, value); } get { return SFRBitValue(128, 5); } }
+        public UInt32 GPIO6 { set { SFRBitValue(128, 0, value); } get { return SFRBitValue(128, 0); } }
+        public UInt32 GPIO7 { set { SFRBitValue(128, 1, value); } get { return SFRBitValue(128, 1); } }
+        public UInt32 GPIO8 { set { SFRBitValue(128, 2, value); } get { return SFRBitValue(128, 2); } }
+        public UInt32 GPIO9 { set { SFRBitValue(128, 3, value); } get { return SFRBitValue(128, 3); } }
+        public UInt32 GPIO10 { set { SFRBitValue(128, 4, value); } get { return SFRBitValue(128, 4); } }
+        public UInt32 GPIO11 { set { SFRBitValue(128, 5, value); } get { return SFRBitValue(128, 5); } }
+        public UInt32 GPIO12 { set { SFRBitValue(129, 0, value); } get { return SFRBitValue(129, 0); } }
+        public UInt32 GPIO13 { set { SFRBitValue(129, 1, value); } get { return SFRBitValue(129, 1); } }
+        public UInt32 GPIO14 { set { SFRBitValue(129, 2, value); } get { return SFRBitValue(129, 2); } }
+        public UInt32 GPIO15 { set { SFRBitValue(129, 3, value); } get { return SFRBitValue(129, 3); } }
+        public UInt32 GPIO16 { set { SFRBitValue(129, 4, value); } get { return SFRBitValue(129, 4); } }
+        public UInt32 GPIO17 { set { SFRBitValue(129, 5, value); } get { return SFRBitValue(129, 5); } }
+        public UInt32 GPIO18 { set { SFRBitValue(129, 6, value); } get { return SFRBitValue(129, 6); } }
+        public UInt32 GPIO19 { set { SFRBitValue(129, 7, value); } get { return SFRBitValue(129, 7); } }
 
         //GPIO Latch methods, is the same as use LATx methods but a little slower, LATE isn't implemented on 18F2550 devices
         public UInt32 GPIO_LATCH1 { set { SFRBitValue(139, 0, value); } get { return SFRBitValue(139, 0); } }
@@ -592,20 +595,20 @@ namespace AccessB_Debug
         public UInt32 GPIO_LATCH3 { set { SFRBitValue(139, 2, value); } get { return SFRBitValue(139, 2); } }
         public UInt32 GPIO_LATCH4 { set { SFRBitValue(139, 6, value); } get { return SFRBitValue(139, 6); } }
         public UInt32 GPIO_LATCH5 { set { SFRBitValue(139, 7, value); } get { return SFRBitValue(139, 7); } }
-        public UInt32 GPIO_LATCH6 { set { SFRBitValue(138, 0, value); } get { return SFRBitValue(138, 0); } }
-        public UInt32 GPIO_LATCH7 { set { SFRBitValue(138, 1, value); } get { return SFRBitValue(138, 1); } }
-        public UInt32 GPIO_LATCH8 { set { SFRBitValue(138, 2, value); } get { return SFRBitValue(138, 2); } }
-        public UInt32 GPIO_LATCH9 { set { SFRBitValue(138, 3, value); } get { return SFRBitValue(138, 3); } }
-        public UInt32 GPIO_LATCH10 { set { SFRBitValue(138, 4, value); } get { return SFRBitValue(138, 4); } }
-        public UInt32 GPIO_LATCH11 { set { SFRBitValue(138, 5, value); } get { return SFRBitValue(138, 5); } }
-        public UInt32 GPIO_LATCH12 { set { SFRBitValue(138, 6, value); } get { return SFRBitValue(138, 6); } }
-        public UInt32 GPIO_LATCH13 { set { SFRBitValue(138, 7, value); } get { return SFRBitValue(138, 7); } }
-        public UInt32 GPIO_LATCH14 { set { SFRBitValue(137, 0, value); } get { return SFRBitValue(137, 0); } }
-        public UInt32 GPIO_LATCH15 { set { SFRBitValue(137, 1, value); } get { return SFRBitValue(137, 1); } }
-        public UInt32 GPIO_LATCH16 { set { SFRBitValue(137, 2, value); } get { return SFRBitValue(137, 2); } }
-        public UInt32 GPIO_LATCH17 { set { SFRBitValue(137, 3, value); } get { return SFRBitValue(137, 3); } }
-        public UInt32 GPIO_LATCH18 { set { SFRBitValue(137, 4, value); } get { return SFRBitValue(137, 4); } }
-        public UInt32 GPIO_LATCH19 { set { SFRBitValue(137, 5, value); } get { return SFRBitValue(137, 5); } }
+        public UInt32 GPIO_LATCH6 { set { SFRBitValue(137, 0, value); } get { return SFRBitValue(137, 0); } }
+        public UInt32 GPIO_LATCH7 { set { SFRBitValue(137, 1, value); } get { return SFRBitValue(137, 1); } }
+        public UInt32 GPIO_LATCH8 { set { SFRBitValue(137, 2, value); } get { return SFRBitValue(137, 2); } }
+        public UInt32 GPIO_LATCH9 { set { SFRBitValue(137, 3, value); } get { return SFRBitValue(137, 3); } }
+        public UInt32 GPIO_LATCH10 { set { SFRBitValue(137, 4, value); } get { return SFRBitValue(137, 4); } }
+        public UInt32 GPIO_LATCH11 { set { SFRBitValue(137, 5, value); } get { return SFRBitValue(137, 5); } }
+        public UInt32 GPIO_LATCH12 { set { SFRBitValue(138, 0, value); } get { return SFRBitValue(138, 0); } }
+        public UInt32 GPIO_LATCH13 { set { SFRBitValue(138, 1, value); } get { return SFRBitValue(138, 1); } }
+        public UInt32 GPIO_LATCH14 { set { SFRBitValue(138, 2, value); } get { return SFRBitValue(138, 2); } }
+        public UInt32 GPIO_LATCH15 { set { SFRBitValue(138, 3, value); } get { return SFRBitValue(138, 3); } }
+        public UInt32 GPIO_LATCH16 { set { SFRBitValue(138, 4, value); } get { return SFRBitValue(138, 4); } }
+        public UInt32 GPIO_LATCH17 { set { SFRBitValue(138, 5, value); } get { return SFRBitValue(138, 5); } }
+        public UInt32 GPIO_LATCH18 { set { SFRBitValue(138, 6, value); } get { return SFRBitValue(138, 6); } }
+        public UInt32 GPIO_LATCH19 { set { SFRBitValue(138, 7, value); } get { return SFRBitValue(138, 7); } }
 
         //GPIO Direction methods, is the same as use TRISx methods but a little slower, TRISE isn't implemented on 18F2550 devices
         public UInt32 GPIO_DIR1 { set { SFRBitValue(148, 0, value); } get { return SFRBitValue(148, 0); } }
@@ -613,20 +616,20 @@ namespace AccessB_Debug
         public UInt32 GPIO_DIR3 { set { SFRBitValue(148, 2, value); } get { return SFRBitValue(148, 2); } }
         public UInt32 GPIO_DIR4 { set { SFRBitValue(148, 6, value); } get { return SFRBitValue(148, 6); } }
         public UInt32 GPIO_DIR5 { set { SFRBitValue(148, 7, value); } get { return SFRBitValue(148, 7); } }
-        public UInt32 GPIO_DIR6 { set { SFRBitValue(147, 0, value); } get { return SFRBitValue(147, 0); } }
-        public UInt32 GPIO_DIR7 { set { SFRBitValue(147, 1, value); } get { return SFRBitValue(147, 1); } }
-        public UInt32 GPIO_DIR8 { set { SFRBitValue(147, 2, value); } get { return SFRBitValue(147, 2); } }
-        public UInt32 GPIO_DIR9 { set { SFRBitValue(147, 3, value); } get { return SFRBitValue(147, 3); } }
-        public UInt32 GPIO_DIR10 { set { SFRBitValue(147, 4, value); } get { return SFRBitValue(147, 4); } }
-        public UInt32 GPIO_DIR11 { set { SFRBitValue(147, 5, value); } get { return SFRBitValue(147, 5); } }
-        public UInt32 GPIO_DIR12 { set { SFRBitValue(147, 6, value); } get { return SFRBitValue(147, 6); } }
-        public UInt32 GPIO_DIR13 { set { SFRBitValue(147, 7, value); } get { return SFRBitValue(147, 7); } }
-        public UInt32 GPIO_DIR14 { set { SFRBitValue(146, 0, value); } get { return SFRBitValue(146, 0); } }
-        public UInt32 GPIO_DIR15 { set { SFRBitValue(146, 1, value); } get { return SFRBitValue(146, 1); } }
-        public UInt32 GPIO_DIR16 { set { SFRBitValue(146, 2, value); } get { return SFRBitValue(146, 2); } }
-        public UInt32 GPIO_DIR17 { set { SFRBitValue(146, 3, value); } get { return SFRBitValue(146, 3); } }
-        public UInt32 GPIO_DIR18 { set { SFRBitValue(146, 4, value); } get { return SFRBitValue(146, 4); } }
-        public UInt32 GPIO_DIR19 { set { SFRBitValue(146, 5, value); } get { return SFRBitValue(146, 5); } }
+        public UInt32 GPIO_DIR6 { set { SFRBitValue(146, 0, value); } get { return SFRBitValue(146, 0); } }
+        public UInt32 GPIO_DIR7 { set { SFRBitValue(146, 1, value); } get { return SFRBitValue(146, 1); } }
+        public UInt32 GPIO_DIR8 { set { SFRBitValue(146, 2, value); } get { return SFRBitValue(146, 2); } }
+        public UInt32 GPIO_DIR9 { set { SFRBitValue(146, 3, value); } get { return SFRBitValue(146, 3); } }
+        public UInt32 GPIO_DIR10 { set { SFRBitValue(146, 4, value); } get { return SFRBitValue(146, 4); } }
+        public UInt32 GPIO_DIR11 { set { SFRBitValue(146, 5, value); } get { return SFRBitValue(146, 5); } }
+        public UInt32 GPIO_DIR12 { set { SFRBitValue(147, 0, value); } get { return SFRBitValue(147, 0); } }
+        public UInt32 GPIO_DIR13 { set { SFRBitValue(147, 1, value); } get { return SFRBitValue(147, 1); } }
+        public UInt32 GPIO_DIR14 { set { SFRBitValue(147, 2, value); } get { return SFRBitValue(147, 2); } }
+        public UInt32 GPIO_DIR15 { set { SFRBitValue(147, 3, value); } get { return SFRBitValue(147, 3); } }
+        public UInt32 GPIO_DIR16 { set { SFRBitValue(147, 4, value); } get { return SFRBitValue(147, 4); } }
+        public UInt32 GPIO_DIR17 { set { SFRBitValue(147, 5, value); } get { return SFRBitValue(147, 5); } }
+        public UInt32 GPIO_DIR18 { set { SFRBitValue(147, 6, value); } get { return SFRBitValue(147, 6); } }
+        public UInt32 GPIO_DIR19 { set { SFRBitValue(147, 7, value); } get { return SFRBitValue(147, 7); } }
 
         #endregion
 
