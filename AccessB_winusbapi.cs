@@ -442,7 +442,44 @@ namespace AccessB_Debug
                     //Lectura sincrona
                     USBDeviceInfo.ReadHandle = CreateFile(USBDeviceInfo.DevicePath, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, IntPtr.Zero, OPEN_EXISTING, 0, IntPtr.Zero);
                     USBDeviceInfo.WriteHandle = CreateFile(USBDeviceInfo.DevicePath, GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, IntPtr.Zero, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, IntPtr.Zero);
-                    return true; //Exito
+
+                    //Next code turn off watchdog on the PIC to stay in AccessB mode
+                    byte[] SndData = new byte[64];
+                    byte[] RcvData = new byte[64];
+                    int WDTCON_Add = 209;
+                    int Value = 0;
+                    SndData[0] = 2;                                                                             //Cmd Escribir
+                    SndData[1] = Convert.ToByte((WDTCON_Add >> 8) & 0x00FF);                                      //AddrH, sin importancia para SFR ya que ese valor se completa dentro del mismo PIC
+                    SndData[2] = Convert.ToByte(WDTCON_Add & 0x00FF);                                             //AddrL
+                    SndData[3] = Convert.ToByte((Value & 0x00FF));                                              //DatosL
+                    SndData[4] = Convert.ToByte((Value >> 8) & 0x00FF);                                         //DatosH que se quiere escribir en el SFR
+
+                    if (WriteUSB(ref SndData) == false)                                                         //Envia el comando a la tarjeta
+                    {
+                        MessageBox.Show("RegValue error: Failed to send data.");
+                        return false;
+                    }
+                    if (ReadUSB(ref RcvData, false) == true)                                                    //Espera la respuesta de la tarjeta
+                    {
+                        //Verificamos que recibio el comando correcto
+                        if (RcvData[0] == SndData[0])                                                           //Si los valores son iguales, el comando fue recibido correctamente
+                        {
+
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("RegValue error: Verification failed");
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("RegValue error: Failed to receive data.");
+                        return false;
+                    }
+
+                    //return true; //Exito
                 }
 
                 index++; //Prueba con el siguiente de la lista
@@ -459,7 +496,45 @@ namespace AccessB_Debug
                     //Lectura sincrona / synchronous read
                     USBDeviceInfo.ReadHandle = CreateFile(USBDeviceInfo.DevicePath, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, IntPtr.Zero, OPEN_EXISTING, 0, IntPtr.Zero);
                     USBDeviceInfo.WriteHandle = CreateFile(USBDeviceInfo.DevicePath, GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, IntPtr.Zero, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, IntPtr.Zero);
-                    return true; //Exito
+
+                    //Next code turn off watchdog on the PIC to stay in AccessB mode
+                    byte[] SndData = new byte[64];
+                    byte[] RcvData = new byte[64];
+                    int WDTCON_Add = 209;
+                    int Value = 0;
+                    SndData[0] = 2;                                                                             //Cmd Escribir
+                    SndData[1] = Convert.ToByte((WDTCON_Add >> 8) & 0x00FF);                                      //AddrH, sin importancia para SFR ya que ese valor se completa dentro del mismo PIC
+                    SndData[2] = Convert.ToByte(WDTCON_Add & 0x00FF);                                             //AddrL
+                    SndData[3] = Convert.ToByte((Value & 0x00FF));                                              //DatosL
+                    SndData[4] = Convert.ToByte((Value >> 8) & 0x00FF);                                         //DatosH que se quiere escribir en el SFR
+
+                    if (WriteUSB(ref SndData) == false)                                                         //Envia el comando a la tarjeta
+                    {
+                        MessageBox.Show("RegValue error: Failed to send data.");
+                        return false;
+                    }
+                    if (ReadUSB(ref RcvData, false) == true)                                                    //Espera la respuesta de la tarjeta
+                    {
+                        //Verificamos que recibio el comando correcto
+                        if (RcvData[0] == SndData[0])                                                           //Si los valores son iguales, el comando fue recibido correctamente
+                        {
+
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("RegValue error: Verification failed");
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("RegValue error: Failed to receive data.");
+                        return false;
+                    }
+
+
+                    //return true; //Exito
                 }
 
                 index++; //Prueba con el siguiente de la lista
